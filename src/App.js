@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import Sidebar from './Components/sidebar';
+import Header from './Components/header';
+import Container from './Components/dataContainer';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [users, setUsers] = useState([
+    {name: 'Dave', email: 'dave@gmail.com'},
+    {name: 'Alicia', email: 'Alicia@gmail.com'},
+    {name: 'Jessica', email: 'Jessica@gmail.com'},
+    {name: 'Harvey', email: 'Harvey@gmail.com'},
+    {name: 'Mike', email: 'Mike@gmail.com'}
+  ]);
+  
+  const [selectedUser, setSelectedUser] = useState();
+
+  useEffect(() => {
+    setSelectedUser(users[0])
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Sidebar/>
+      <Header selectedUser={selectedUser}/>
+      <Container users={users} setUsers={setUsers} selectedUser={selectedUser}/>
     </div>
   );
 }
