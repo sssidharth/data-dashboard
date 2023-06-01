@@ -1,5 +1,6 @@
 .App {
   display: grid;
+  height: 100vh;
   grid-template-columns: 15vw auto;
   grid-template-rows:  50px calc(100vh - 55px);
   grid-template-areas: 'sidebar  header'
